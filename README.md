@@ -56,4 +56,4 @@ convertimg          Running   21k           42d
 ## FAQ
 
 Q: How is `functl` pronounced?<br />
-A: fun-kuddle
+A: fun-kuddle … because you can't control fun
