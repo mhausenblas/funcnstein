@@ -14,18 +14,24 @@ I believe we can do better, better as in great UX, ease of use, and powerful set
 
 So this is what the idea of `funcnstein` is: a multi-platform tool for managing functions.
 
-Sample interactions follow below—note, no matter if you're using the CLI tool against Lambda or OpenFaaS or kubeless or whatever target, the UX is always the same:
 
-## Getting an overview of what is running
+## Exemplary usage
+
+Sample interactions follow below—note, no matter if you're using the CLI tool against Lambda or OpenFaaS or kubeless or whatever target, the UX is always the same.
+
+### Getting an overview of what is running
 
 ```bash
 $ functl get
 NAME                STATUS    INVOCATIONS   AGE
 convertimg          Running   21k           42d
+preprocess          Running   29k           42d
+limitchecker        Running   40k           30d
+compliance          Running    8k           18d
 myfirstgofunction   Running   300           10m
 ```
 
-## Examining a specific function
+### Examining a specific function
 
 ```bash
 $ functl describe convertimg
@@ -38,20 +44,32 @@ Triggers: API Gateway, S3
 Labels: owner=mshelley
 ```
 
-## Organizing stuff
+### Resolving dependencies
+
+```bash
+$ functl resolve convertimg 
+Called by:
+- preprocess
+Calls:
+- limitchecker
+- compliance
+```
+
+### Organizing stuff
 
 ```bash
 $ functl label convertimg stage=prod
 Labels: owner=mshelley, stage=prod
 ```
 
-## Advanced queries
+### Advanced queries
 
 ```bash
 $ functl get --project='*paying*' --selector='owner=mshelley' --invocations='>20k'
 NAME                STATUS    INVOCATIONS   AGE
 convertimg          Running   21k           42d
 ```
+
 
 ## FAQ
 
