@@ -52,3 +52,8 @@ $ functl get --project='*paying*' --selector='owner=mshelley' --invocations='>20
 NAME                STATUS    INVOCATIONS   AGE
 convertimg          Running   21k           42d
 ```
+
+## FAQ
+
+Q: How is `functl` pronounced?<br />
+A: fun-kuddle
